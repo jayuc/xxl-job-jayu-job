@@ -37,7 +37,7 @@ public class WarnJobHandler extends IJobHandler {
 				XxlJobLogger.log("无可执行的任务");
 			}
 		} catch (Exception e) {
-			XxlJobLogger.log("执行出错");
+			XxlJobLogger.log("执行出错", e);
 			return FAIL;
 		}
 		

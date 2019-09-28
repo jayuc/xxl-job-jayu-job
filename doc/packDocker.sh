@@ -43,5 +43,15 @@ cp ./doc/application.properties ./src/main/resources/
 echo "setp 3/4: mvn package"
 mvn clean package -Dmaven.test.skip=true
 
+# setp 4/4:
+# 构建docker镜像
+# 注意：DockerFile 中的版本号要配置和项目版本号一致
+echo "setp 4/4: docker build"
+cp ./doc/Dockerfile ./target/
+cp ./doc/application.properties ./target/
+cd ./target/
+docker build -t "xxl-job/jayu:${m_version}" .
+docker save "xxl-job/jayu:${m_version}" -o "xxl_job_jayu_${m_version}.jar"
 
-exec pwd
+echo "finshed."
+

@@ -25,19 +25,19 @@ public class WarnJobHandler extends IJobHandler {
 	public ReturnT<String> execute(String param) throws Exception {
 		XxlJobLogger.log("开始执行提醒任务, param: " + param);
 		
+		SimpleMailMessage message = getMessage(param);
+		if(null != message) {
+			XxlJobLogger.log(message.toString());
+		}else {
+			XxlJobLogger.log("无可执行的任务");
+			return FAIL;
+		}
+		
 		try {
-			SimpleMailMessage message = getMessage(param);
-			if(null != message) {
-				XxlJobLogger.log("from: " + message.getFrom());
-				XxlJobLogger.log("to: " + message.getTo());
-				XxlJobLogger.log("subject: " + message.getSubject());
-				XxlJobLogger.log("content: " + message.getText());
-				mailSender.send(message);
-			}else {
-				XxlJobLogger.log("无可执行的任务");
-			}
+			mailSender.send(message);
 		} catch (Exception e) {
-			XxlJobLogger.log("执行出错", e);
+			XxlJobLogger.log("执行出错");
+			XxlJobLogger.log(e);
 			return FAIL;
 		}
 		

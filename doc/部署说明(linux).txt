@@ -1,0 +1,3 @@
+
+一，修改application.properties 和 DockerFile 两个配置文件，注意修改文件中的项目版本号
+二，执行packDocker.sh命令，第一个参数是项目版本号

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.github.jayuc</groupId>
 	<artifactId>xxl-job-jayu-job</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<name>xxl-job-jayu-job</name>
 	<description></description>
 
